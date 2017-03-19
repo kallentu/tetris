@@ -157,14 +157,13 @@ public class Group : MonoBehaviour {
                 enabled = false;
             }
 
+            //makes block go down faster
             transform.position += Vector3.down * 5 * Time.deltaTime;
 
             lastFall = Time.time;
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-
-
 
             // See if valid
             if (isValidGridPos())
@@ -183,6 +182,7 @@ public class Group : MonoBehaviour {
                 enabled = false;
             }
 
+            //makes block hit the lowest possible space
             while (isValidGridPos())
             {
                 updateGrid();
