@@ -20,12 +20,11 @@ public class Spawner : MonoBehaviour {
         int index = Random.Range(0, blocks.Length);
         while (blockSpace[index] == 1) // guarantees no repeats at least
         {
-            for (int i = 0; i < blocks.Length; i++) 
+            for (int i = 0; i < blocks.Length; i++) //goes through every single holder in array to check for available block to spawn
             {
                 if (blockSpace[i] == 0)
                 {
                     index = i;
-                    blockSpace[i] = 1;
                     break;
                 }
             }
@@ -38,13 +37,18 @@ public class Spawner : MonoBehaviour {
                 blockSpace[5] == 1 &&
                 blockSpace[6] == 1)
             {
-                resetSpaces();
+                resetSpaces();        //so we reset
             }
         }
         
-        if (blockSpace[index] == 0)
+        if (blockSpace[index] == 0) //block is immediately available, change availibility for afterwards
         {
-            blockSpace[index] = 1;
+            blockSpace[index] = 1; 
+        }
+
+        foreach (int num in blockSpace)
+        {
+            Debug.Log(num);
         }
 
         Instantiate(blocks[index],
