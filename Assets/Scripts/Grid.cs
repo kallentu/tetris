@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Grid : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class Grid : MonoBehaviour {
 
     //use transform instead of gameobject so that we can just check position directly
     public static Transform[,] grid = new Transform[w, h];
+
+    public static int score = 0;
 
     //makes sure that when we rotate, the vector stays at a rounded number
     public static Vector2 roundVec2(Vector2 v) {
@@ -71,6 +74,7 @@ public class Grid : MonoBehaviour {
             if (isRowFull(y))
             {
                 deleteRow(y);
+                Spawner.score++;
                 decreaseRowsAbove(y+1);
                 --y; //decrease because we want to check the row that drops down
             }
@@ -79,11 +83,9 @@ public class Grid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }

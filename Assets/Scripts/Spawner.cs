@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
 
     public GameObject[] blocks;
     private int[] blockSpace = { 0, 0, 0, 0, 0, 0, 0}; //which blocks have been spawned
+    public Text row;
+    public static int score = 0;
 
+    //resets the availibility of the blocks that are spawned
     void resetSpaces()
     {
         for (int i = 0; i < blockSpace.Length; i++)
@@ -46,10 +50,6 @@ public class Spawner : MonoBehaviour {
             blockSpace[index] = 1; 
         }
 
-        foreach (int num in blockSpace)
-        {
-            Debug.Log(num);
-        }
 
         Instantiate(blocks[index],
                     transform.position, //Spawner's location
@@ -58,11 +58,12 @@ public class Spawner : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
+        row.text = "Rows : " + score;
         spawnNext();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        row.text = "Rows : " + score;
+    }
 }
